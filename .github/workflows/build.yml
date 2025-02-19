@@ -41,8 +41,12 @@ jobs:
         run: |
           pyinstaller -y app.spec --clean  # Build your application with PyInstaller
 
+      - name: List contents of dist directory
+        run: |
+          ls -R dist/
+
       - name: Upload the executable as an artifact
         uses: actions/upload-artifact@v4
         with:
           name: ramanbiolib-ui-ubuntu
-          path: dist/app/ramanbiolib-ui
+          path: dist/ramanbiolib-ui/ramanbiolib-ui
