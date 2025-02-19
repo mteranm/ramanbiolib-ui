@@ -11,7 +11,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-20.04
+    runs-on: windows-latest #ubuntu-20.04
 
     steps:
       - name: Checkout code
@@ -52,5 +52,5 @@ jobs:
       - name: Upload the executable as an artifact
         uses: actions/upload-artifact@v4
         with:
-          name: ramanbiolib-ui-ubuntu
+          name: ramanbiolib-ui-windows #ramanbiolib-ui-ubuntu
           path: dist/app/app
