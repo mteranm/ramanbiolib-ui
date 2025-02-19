@@ -48,6 +48,11 @@ jobs:
         run: |
           pyinstaller -y app.spec --clean  # Build your application with PyInstaller
 
+      - name: List generated files (Windows)
+        run: |
+          Get-ChildItem -Path dist/ramanbiolib-ui -Recurse
+        shell: pwsh
+
       - name: Upload the executable as an artifact
         uses: actions/upload-artifact@v4
         with:

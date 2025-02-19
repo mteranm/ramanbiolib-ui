@@ -3,6 +3,10 @@
 import os
 import glob
 from PyInstaller.utils.hooks import collect_dynamic_libs, collect_data_files
+import cefpython3
+
+CEF_PATH = os.path.dirname(cefpython3.__file__)
+print(os.path.dirname(cefpython3.__file__))
 
 block_cipher = None
 
@@ -20,13 +24,19 @@ datas = [
     (file, 'templates') for file in template_files
 ]
 
+print(collect_dynamic_libs('cefpython3'),)
+
 print(collect_data_files('cefpython3'),)
 
 a = Analysis(
     ['src/app.py'],
     pathex=['.'],
     binaries=[
-        *collect_dynamic_libs('cefpython3')
+        *collect_dynamic_libs('cefpython3'),
+        # Manually add CEF data files like .pak files
+        (f"{CEF_PATH}/cef.pak", "."),  
+        (f"{CEF_PATH}/devtools_resources.pak", "."),  
+        (f"{CEF_PATH}/locales", "locales"),  # If locales are missing
     ],  # Collect CEF shared libraries
     datas=[
         *collect_data_files('cefpython3'),
