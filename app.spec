@@ -1,7 +1,7 @@
 # -*- mode: python ; coding: utf-8 -*-
 
 import os
-from glob import glob
+import glob
 from PyInstaller.utils.hooks import collect_dynamic_libs, collect_data_files
 
 block_cipher = None
