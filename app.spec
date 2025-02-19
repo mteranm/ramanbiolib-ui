@@ -39,9 +39,9 @@ a = Analysis(
     datas=[
         *collect_data_files('cefpython3'),
         ("src/templates/index.html", "src/templates/"),
-        (f"{CEF_PATH}/cef.pak", "."),  
-        (f"{CEF_PATH}/devtools_resources.pak", "."),  
-        (f"{CEF_PATH}/locales", "locales"),  # If locales are missing
+        (f"{CEF_PATH}/cef.pak", "cefpython3"),  
+        (f"{CEF_PATH}/devtools_resources.pak", "cefpython3"),  
+        (f"{CEF_PATH}/locales", "cefpython3/locales"),  # If locales are missing
     ],
     hiddenimports=[],
     hookspath=[],
