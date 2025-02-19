@@ -40,11 +40,10 @@ jobs:
         run: |
           $env:DATA_DIR = Get-Content -Path "data_directory.txt" | Out-String
 
-      #- name: Add binary and data files to PyInstaller
-      #  run: |
-      #    pyinstaller --add-data "$env:DATA_DIR/*.csv;ramanbiolib/db" src/app.py
-      #    --add-data "C:\path\to\data\file1.csv;ramanbiolib/db;C:\path\to\data\file2.csv;ramanbiolib/db"
-      #
+      - name: Add binary and data files to PyInstaller
+        run: |
+          pyinstaller --add-data "$env:DATA_DIR/raman_peaks_db.csv;ramanbiolib/db" --add-data "$env:DATA_DIR/raman_spectra_db.csv;ramanbiolib/db" src/app.py --add-data "src/templates/index.html;src/templates"
+      
 
       - name: Build the application using PyInstaller
         run: |
