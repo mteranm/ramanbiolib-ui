@@ -21,6 +21,18 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Install Chocolatey
+        run: |
+          Set-ExecutionPolicy Bypass -Scope Process -Force; 
+          [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls12; 
+          iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+        shell: powershell
+
+      - name: Install Visual C++ Redistributable
+        run: |
+          choco install vcredist2010 -y
+        shell: powershell
+
       - name: Check for VC++ Redistributable
         run: |
           if (-Not (Get-Command "vcredist_x64.exe" -ErrorAction SilentlyContinue)) {
