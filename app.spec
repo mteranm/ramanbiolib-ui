@@ -1,20 +1,31 @@
 # -*- mode: python ; coding: utf-8 -*-
 
+import os
 from glob import glob
 from PyInstaller.utils.hooks import collect_dynamic_libs, collect_data_files
 
 block_cipher = None
+
+# Collect files dynamically
+static_files = glob.glob(os.path.join('src', 'static', '*'))
+img_files = glob.glob(os.path.join('src', 'img', '*'))
+template_files = glob.glob(os.path.join('src', 'templates', '*'))
+
+# Create the datas list
+datas = [
+    (file, 'static') for file in static_files
+] + [
+    (file, 'img') for file in img_files
+] + [
+    (file, 'templates') for file in template_files
+]
 
 a = Analysis(
     ['src/app.py'],
     pathex=['.'],
     binaries=[
     ],  # Collect CEF shared libraries
-    datas=[
-        ("src/static/*", "src/static"), 
-        ("src/img/*", "src/img"), 
-        ("src/templates/*", "src/templates"), 
-    ],
+    datas=datas,
     hiddenimports=[],
     hookspath=[],
     hooksconfig={},
