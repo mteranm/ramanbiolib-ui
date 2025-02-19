@@ -38,23 +38,11 @@ jobs:
 
       - name: Set DATA_DIR based on OS
         run: |
-          if [[ "$RUNNER_OS" == "Windows" ]]; then
-            # PowerShell command for Windows
-            $env:DATA_DIR = Get-Content -Path "data_directory.txt" | Out-String
-          else
-            # Bash command for Linux/macOS
-            DATA_DIR=$(cat data_directory.txt)
-            echo "DATA_DIR=$DATA_DIR" >> $GITHUB_ENV
-          fi
+          $env:DATA_DIR = Get-Content -Path "data_directory.txt" | Out-String
 
       - name: Add binary and data files to PyInstaller
         run: |
-          if [[ "$RUNNER_OS" == "Windows" ]]; then
-            # On Windows, use PowerShell to pass environment variable
-            pyinstaller --add-data "$env:DATA_DIR/*.csv;ramanbiolib/db" src/app.py
-          else
-            # On Linux/macOS, use the DATA_DIR directly
-            pyinstaller --add-data "$DATA_DIR/*.csv:ramanbiolib/db" src/app.py
+          pyinstaller --add-data "$env:DATA_DIR/*.csv;ramanbiolib/db" src/app.py
 
       - name: Build the application using PyInstaller
         run: |
