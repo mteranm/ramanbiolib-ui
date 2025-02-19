@@ -11,7 +11,11 @@ on:
 
 jobs:
   build:
-    runs-on: windows-latest #ubuntu-20.04
+    strategy:
+      matrix:
+        os: [ubuntu-20.04, windows-latest, macos-latest]  # Define platforms in the matrix
+
+    runs-on: ${{ matrix.os }}
 
     steps:
       - name: Checkout code
@@ -32,25 +36,32 @@ jobs:
         run: |
           python -c "import os, ramanbiolib; print(os.path.join(os.path.dirname(ramanbiolib.__file__), 'db'))" > data_directory.txt
 
+      - name: Set DATA_DIR based on OS
+        run: |
+          if [[ "$RUNNER_OS" == "Windows" ]]; then
+            # PowerShell command for Windows
+            $env:DATA_DIR = Get-Content -Path "data_directory.txt" | Out-String
+          else
+            # Bash command for Linux/macOS
+            DATA_DIR=$(cat data_directory.txt)
+            echo "DATA_DIR=$DATA_DIR" >> $GITHUB_ENV
+          fi
+
       - name: Add binary and data files to PyInstaller
         run: |
-          DATA_DIR=$(cat data_directory.txt)  # Read the directory from the file
-          pyinstaller --add-data "$DATA_DIR/*.csv:ramanbiolib/db" src/app.py  # Use the correct path
+          if [[ "$RUNNER_OS" == "Windows" ]]; then
+            # On Windows, use PowerShell to pass environment variable
+            pyinstaller --add-data "$env:DATA_DIR/*.csv;ramanbiolib/db" src/app.py
+          else
+            # On Linux/macOS, use the DATA_DIR directly
+            pyinstaller --add-data "$DATA_DIR/*.csv:ramanbiolib/db" src/app.py
 
       - name: Build the application using PyInstaller
         run: |
           pyinstaller -y app.spec --clean  # Build your application with PyInstaller
 
-      - name: List contents of dist directory
-        run: |
-          ls -R dist/
-
-      - name: List contents of dist directory
-        run: |
-          ls -R dist/app/
-
       - name: Upload the executable as an artifact
         uses: actions/upload-artifact@v4
         with:
-          name: ramanbiolib-ui-windows #ramanbiolib-ui-ubuntu
-          path: dist/app/app
+          name: ramanbiolib-ui-${{ matrix.os }}  # Dynamically name the artifact
+          path: dist/app/app  # Adjust path if necessary
