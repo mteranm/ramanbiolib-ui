@@ -46,7 +46,7 @@ exe = EXE(
     a.datas,
     [],
     name='ramanbiolib-ui',
-    debug=False,
+    debug=True,
     bootloader_ignore_signals=False,
     strip=False,
     upx=True,
