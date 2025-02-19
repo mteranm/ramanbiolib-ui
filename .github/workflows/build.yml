@@ -40,10 +40,9 @@ jobs:
         run: |
           $env:DATA_DIR = Get-Content -Path "data_directory.txt" | Out-String
 
-      - name: Add binary and data files to PyInstaller
-        run: |
-          pyinstaller --add-data "src/templates/index.html;src/templates"
-      
+      #- name: Add binary and data files to PyInstaller
+      #  run: |
+      #    pyinstaller --add-data "src/templates/index.html;src/templates" src/app.py
 
       - name: Build the application using PyInstaller
         run: |

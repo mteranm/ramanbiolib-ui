@@ -25,7 +25,7 @@ a = Analysis(
     pathex=['.'],
     binaries=[
     ],  # Collect CEF shared libraries
-    datas=datas,
+    datas=[("src/templates/index.html", "src/templates/")],
     hiddenimports=[],
     hookspath=[],
     hooksconfig={},
