@@ -34,13 +34,13 @@ a = Analysis(
     binaries=[
         *collect_dynamic_libs('cefpython3'),
         # Manually add CEF data files like .pak files
-        (f"{CEF_PATH}/cef.pak", "."),  
-        (f"{CEF_PATH}/devtools_resources.pak", "."),  
-        (f"{CEF_PATH}/locales", "locales"),  # If locales are missing
     ],  # Collect CEF shared libraries
     datas=[
         *collect_data_files('cefpython3'),
-        ("src/templates/index.html", "src/templates/")
+        ("src/templates/index.html", "src/templates/"),
+        (f"{CEF_PATH}/cef.pak", "."),  
+        (f"{CEF_PATH}/devtools_resources.pak", "."),  
+        (f"{CEF_PATH}/locales", "locales"),  # If locales are missing
     ],
     hiddenimports=[],
     hookspath=[],
