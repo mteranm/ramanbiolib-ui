@@ -33,6 +33,8 @@ a = Analysis(
     pathex=['.'],
     binaries=[
         *collect_dynamic_libs('cefpython3'),
+        ("C:/Windows/System32/MSVCR100.dll", "."),
+        ("C:/Windows/System32/widevinecdm.dll", "."),
         # Manually add CEF data files like .pak files
     ],  # Collect CEF shared libraries
     datas=[
