@@ -35,7 +35,7 @@ jobs:
       - name: Add binary and data files to PyInstaller
         run: |
           DATA_DIR=$(cat data_directory.txt)  # Read the directory from the file
-          pyinstaller --add-data "$DATA_DIR/*.csv:ramanbiolib/db" app.py  # Use the correct path
+          pyinstaller --add-data "$DATA_DIR/*.csv:ramanbiolib/db" src/app.py  # Use the correct path
 
       - name: Build the application using PyInstaller
         run: |
