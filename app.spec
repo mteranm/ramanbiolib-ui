@@ -39,8 +39,7 @@ a = Analysis(
     datas=[
         *collect_data_files('cefpython3'),
         ("src/templates/index.html", "src/templates/"),
-        ('cefpython3/cef.pak', 'cefpython3'),
-        #("c:\hostedtoolcache\windows\python\3.7.9\x64\lib\site-packages\cefpython3\cef.pak", "cefpython3"),  
+        ("c:\\hostedtoolcache\\windows\\python\\3.7.9\\x64\\lib\\site-packages\\cefpython3\\cef.pak", "cefpython3"),  
         #("c:\hostedtoolcache\windows\python\3.7.9\x64\lib\site-packages\cefpython\devtools_resources.pak", "cefpython3"),  
         #("c:\hostedtoolcache\windows\python\3.7.9\x64\lib\site-packages\cefpython3\locales", "cefpython3/locales"),  # If locales are missing
     ],
