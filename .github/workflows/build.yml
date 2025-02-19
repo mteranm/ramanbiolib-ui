@@ -43,7 +43,7 @@ jobs:
 
       - name: List contents of dist directory
         run: |
-          ls -R dist/dist/
+          ls -R dist/
 
       - name: List contents of dist directory
         run: |
