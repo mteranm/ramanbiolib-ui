@@ -9,16 +9,11 @@ a = Analysis(
     ['src/app.py'],
     pathex=['.'],
     binaries=[
-        ('/usr/lib/x86_64-linux-gnu/libnss3.so', '.'),
-        ('/usr/lib/x86_64-linux-gnu/nss/libsoftokn3.so', '.'),
-        ('/usr/lib/x86_64-linux-gnu/nss/libnssckbi.so', '.'),
-        ('/usr/lib/x86_64-linux-gnu/libpython3.7m.so.1.0', '.')
     ],  # Collect CEF shared libraries
     datas=[
         ("src/static/*", "src/static"), 
         ("src/img/*", "src/img"), 
         ("src/templates/*", "src/templates"), 
-        *collect_data_files('cefpython3')
     ],
     hiddenimports=[],
     hookspath=[],
