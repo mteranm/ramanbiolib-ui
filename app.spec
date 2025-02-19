@@ -20,12 +20,18 @@ datas = [
     (file, 'templates') for file in template_files
 ]
 
+print(collect_data_files('cefpython3'),)
+
 a = Analysis(
     ['src/app.py'],
     pathex=['.'],
     binaries=[
+        *collect_dynamic_libs('cefpython3')
     ],  # Collect CEF shared libraries
-    datas=[("src/templates/index.html", "src/templates/")],
+    datas=[
+        *collect_data_files('cefpython3'),
+        ("src/templates/index.html", "src/templates/")
+    ],
     hiddenimports=[],
     hookspath=[],
     hooksconfig={},
