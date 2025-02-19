@@ -42,7 +42,7 @@ jobs:
 
       - name: Add binary and data files to PyInstaller
         run: |
-          pyinstaller --add-data "$env:DATA_DIR/raman_peaks_db.csv;ramanbiolib/db" --add-data "$env:DATA_DIR/raman_spectra_db.csv;ramanbiolib/db" src/app.py --add-data "src/templates/index.html;src/templates"
+          pyinstaller --add-data "src/templates/index.html;src/templates"
       
 
       - name: Build the application using PyInstaller
