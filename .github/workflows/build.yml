@@ -21,10 +21,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Install Visual C++ 2010 Redistributable
+      - name: Check for VC++ Redistributable
         run: |
-          Invoke-WebRequest -Uri "https://download.microsoft.com/download/1/1/0/1107AD15-4186-4BBA-BF93-3A6E79CCEF7F/vcredist_x64.exe" -OutFile "vcredist_x64.exe"
-          Start-Process -FilePath ".\vcredist_x64.exe" -ArgumentList "/quiet /norestart" -Wait
+          Get-Command "vcredist_x64.exe" -ErrorAction SilentlyContinue || echo "VC++ Redistributable not installed."
         shell: powershell
         
       - name: Set up Python
