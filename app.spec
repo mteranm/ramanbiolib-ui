@@ -34,7 +34,6 @@ a = Analysis(
     binaries=[
         *collect_dynamic_libs('cefpython3'),
         ("C:/Windows/System32/MSVCR100.dll", "."),
-        ("C:/Windows/System32/widevinecdm.dll", "."),
         # Manually add CEF data files like .pak files
     ],  # Collect CEF shared libraries
     datas=[
@@ -48,7 +47,7 @@ a = Analysis(
     hookspath=[],
     hooksconfig={},
     runtime_hooks=[],
-    excludes=[],
+    excludes=['widevinecdm.dll'],
     win_no_prefer_redirects=False,
     win_private_assemblies=False,
     cipher=block_cipher,
