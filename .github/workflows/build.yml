@@ -48,7 +48,7 @@ jobs:
 
       - name: Build the application using PyInstaller
         run: |
-          pyinstaller -y app.spec --clean  # Build your application with PyInstaller
+          pyinstaller -y --debug=all app.spec --clean  # Build your application with PyInstaller
 
       - name: Upload the executable as an artifact
         uses: actions/upload-artifact@v4
