@@ -17,7 +17,6 @@ a = Analysis(
     datas=[
         ("src/static/*", "src/static"), 
         ("src/img/*", "src/img"), 
-        ('.venv/lib/python3.7/site-packages/ramanbiolib/db/*.csv', 'ramanbiolib/db'),
         ("src/templates/*", "src/templates"), 
         *collect_data_files('cefpython3')
     ],

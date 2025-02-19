@@ -28,6 +28,15 @@ jobs:
           pip install pyinstaller
           pip install -r requirements.txt
 
+      - name: Find package data files (CSV)
+        run: |
+          python -c "import os, ramanbiolib; print(os.path.join(os.path.dirname(ramanbiolib.__file__), 'db'))" > data_directory.txt
+
+      - name: Add binary and data files to PyInstaller
+        run: |
+          DATA_DIR=$(cat data_directory.txt)  # Read the directory from the file
+          pyinstaller --add-data "$DATA_DIR/*.csv:ramanbiolib/db" app.py  # Use the correct path
+
       - name: Build the application using PyInstaller
         run: |
           pyinstaller app.spec --clean  # Build your application with PyInstaller
