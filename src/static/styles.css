@@ -1,0 +1,320 @@
+/* Common */
+
+* {
+    font-family: Helvetica;
+}
+
+body {
+    margin: 0;
+}
+
+h1 {
+    color:#000078;
+}
+
+h2 {
+    color:#000078;
+    font-size: 18pt;
+}
+
+.header {
+    padding: 10px 20px 10px 20px;
+    border-bottom: 1px solid #000078;
+}
+
+.header img {
+    height: 65px;
+}
+
+html, body { height: 100% }
+body { display: flex; flex-direction: column; min-height: 100% }
+
+.content {
+    margin-bottom: 20px;
+    flex-grow: 1;
+}
+
+.content h1 {
+    margin: 0px 80px 50px 80px;
+}
+
+/* Search box */
+
+.search_section {
+    background: #f4f4f4;
+    padding: 50px 0;
+}
+
+#search_form {
+    margin-bottom: 10px;
+}
+
+.search_box {
+    padding-top: 15px;
+    margin: auto;
+    width: fit-content;
+    color: #000078;
+}
+
+.search_box .search_button {
+    display: block;
+    margin: auto;
+    margin-top: 40px;
+}
+
+.search_box button {
+    background: #000078;
+    border: #000078;
+    color: #fff;
+    font-weight: bold;
+    border-radius: 3px;
+    padding: 13px 60px;
+    font-size: 12pt;
+}
+
+.search_box input[type=number], input[type=text] {
+    border: 1px #000078 solid;
+    color: #000078;
+}
+
+.search_box select {
+    background: #000078;
+    border: #000078;
+    color: #fff;
+    font-weight: bold;
+    padding: 6px 10px;
+}
+
+.search_box label {
+    font-weight: bold;
+}
+
+.params_row {
+    margin: 20px 0;
+    overflow: hidden;
+}
+
+.params_row .param label {
+    display: block;
+
+}
+
+.param {
+    margin-right: 30px;
+    float: left;
+}
+
+.inline_param {
+    margin: 10px;
+} 
+
+.input_fields {
+    padding: 15px;
+    overflow: hidden;
+}
+
+.input_fields .params_row {
+    margin: 5px auto;
+    width: fit-content;
+}
+
+.input_fields span {
+    font-weight: bold;
+}
+
+input[type=number] {
+    padding: 5px 5px;
+    width: 125px;
+}
+
+button {
+    padding: 10px 50px;
+}
+
+#peaks {
+    width: 350px;
+}
+
+.loader_container {
+    display: none;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 1px;
+    background:rgba(255,255,255,0.5);
+    padding: 20px;
+}
+
+.loader_container.active {
+    display: block;
+}
+
+.loader {
+    border: 16px solid #f3f3f3;
+    border-top: 16px solid #000078; 
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+    margin: 150px auto;
+}
+  
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Style the tab */
+
+.tab {
+  overflow: hidden;
+  width: 806px; 
+  margin: 0 auto;
+}
+
+/* Style the buttons that are used to open the tab content */
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: 1px solid #000078;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-weight: bold;
+  color: #000078;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #000078;
+  color: white;
+  font-weight: bold;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  width: fit-content; 
+  margin: 0 auto;
+} 
+
+/* Results */
+
+.results {
+    margin: 50px 80px;
+}
+
+.cite {
+    margin: 50px 80px;
+}
+
+.results button {
+    background: #000078;
+    border: #000078;
+    color: #fff;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 3px;
+    padding: 12px 25px;
+}
+
+.full_results {
+    display: none;
+}
+
+.show_more_div {
+    margin-top: 40px;
+    overflow: hidden;
+}
+
+.show_more_div button {
+    margin: auto;
+    display: block;
+}
+
+#show_more_btn {
+    border: none;
+    background: none;
+    margin: auto;
+    font-weight: bold;
+    font-size: 12pt;
+    color:#000078;
+    margin-bottom: 10px;
+}
+
+.results_plot {
+    margin-top: 40px;
+}
+
+h1 {
+    font-size: 20pt;
+    display: block;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border: none;
+    table-layout: fixed;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+td,
+th,
+tr {
+    vertical-align: middle;
+    padding: 0.5em 0.5em;
+    line-height: normal;
+    white-space: normal;
+    max-width: none;
+    border: none;
+}
+
+tbody tr {
+    background-color: #fff;
+}
+
+tbody tr:nth-child(2n+1) {
+    background-color: #f5f5f5;
+}
+
+thead {
+    border-bottom: 1px solid black;
+    vertical-align: bottom;
+}
+
+/* Footer */
+
+.footer {
+    padding: 25px 20px 25px 20px;
+    border-top: 1px solid #ccc;
+    /*overflow: hidden;*/
+}
+
+.footer span {
+    font-weight: bold;
+    color: #000078;
+    display: inline-block;
+    width: fit-content;
+    line-height: 60px;
+    vertical-align: middle;
+}
+
+.footer .logo {
+    overflow: hidden;
+    float: right;
+}
+.footer .logo img {
+    display: block;
+    margin: 0 15px; 
+    height: 60px;
+    float: left;
+}

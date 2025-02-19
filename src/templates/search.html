@@ -1,0 +1,107 @@
+<div class="search_section">
+    <h1>Raman Spectral Search in Biomolecules Database</h1>
+    <div class="tab">
+        <button class="tablinks" onclick="openTab(event, 'slk')" id="slk_tab">SLK</button>
+        <button class="tablinks" onclick="openTab(event, 'peak_matching')" id="pm_tab">Peak matching</button>
+    </div>
+
+    <div id="slk" class="tabcontent">
+        <div class="search_box">
+            <h2>Spectral Linear Kernel (SLK) similarity search</h2>
+            <div id="search_form">
+                <div class="params_row">
+                    <div class="param">
+                        <label for="spectra" class="custom_file_upload">Raman spectrum file:</label>
+                        <input type="file" id="spectra" name="spectra" accept=".txt" />
+
+                    </div>
+                    <div class="param">
+                        <label for="window">Window size:</label>
+                        <input type="number" id="window" name="window" value="25">
+                    </div>
+                    <div class="param">
+                        <label for="table_n">Top N table:</label>
+                        <input type="number" id="table_n" name="table_n" value="10">
+                    </div>
+                    <div class="param">
+                        <label for="plot_n">Top N plot:</label>
+                        <input type="number" id="plot_n" name="plot_n" value="5">
+                    </div>
+                </div>
+                <button onclick="onSearchClick()" class="search_button">Search</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="peak_matching" class="tabcontent">
+        <div class="search_box">
+            <h2>Peak matching search</h2>
+            <div id="search_form">
+                <div class="select_row">
+                    <div class="inline_param">
+                        <label for="input_selection">Source: </label>
+                        <select name="input_selection" id="input_selection">
+                            <option value="spectrum">spectrum</option>
+                            <option value="peaks">peaks list</option>
+                        </select>
+                    </div>
+                    <div class="input_fields" id="specturm_input">
+                        <div class="params_row">
+                            <div class="param">
+                                <label for="spectra">Raman spectrum file</label>
+                                <input type="file" id="pm_spectra" name="spectra" accept=".txt" />
+
+                            </div>
+                            <div class="param">
+                                <label for="prominence">Peak detection prominence:</label>
+                                <input type="number" id="prominence" name="prominence" , step="0.01" value="0.1">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input_fields" id="peaks_input">
+                        <div class="params_row">
+                            <div class="inline_param">
+                                <label for="peaks">Peaks wavenumbers:</label>
+                                <input type="text" id="peaks" name="peaks" , value="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="params_row">
+                    <div class="param">
+                        <label for="tolerance">Tolerance size:</label>
+                        <input type="number" id="tolerance" name="tolerance" value="5">
+                    </div>
+                    <div class="param">
+                        <label for="table_n">Top table results N:</label>
+                        <input type="number" id="pm_table_n" name="table_n" value="10">
+                    </div>
+                    <div class="param">
+                        <label for="plot_n">Top plot results N</label>
+                        <input type="number" id="pm_plot_n" name="plot_n" value="5">
+                    </div>
+                    <div class="param">
+                        <label for="penalty">Penalty type:</label>
+                        <select name="penalty" id="penalty">
+                            <option value="linear">Linear</option>
+                            <option value="inverse_power">Inverse power</option>
+                        </select>
+                    </div>
+                    <div class="param">
+                        <label for="sort_metric">Sorted by:</label>
+                        <select name="sort_metric" id="sort_metric">
+                            <option value="IUR">IUR</option>
+                            <option value="MR">MR</option>
+                            <option value="RMR">RMR</option>
+                            <option value="PIUR">PIUR</option>
+                        </select>
+                    </div>
+                </div>
+                <button onclick="onPMSearchClick()" class="search_button">Search</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="loader_container">
+    <div class="loader"></div> 
+</div>

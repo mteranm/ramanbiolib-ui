@@ -1,0 +1,6 @@
+cefpython3==66.0
+numpy==1.21.6
+pandas==1.3.0
+scipy==1.7.3
+plotly==5.18.0
+git+https://raman-biomolecule-library:glpat-RCvhrE2qe1XWFSRV6sDx@gitlab.com/teran-ia-projects/phd/raman/raman-biomolecule-library.git@develop
