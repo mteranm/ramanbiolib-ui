@@ -21,10 +21,17 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Set up Python
+      - name: Set up Python (macOS)
+        if: runner.os == 'macOS'
         uses: actions/setup-python@v3
         with:
           python-version: 3.8
+
+      - name: Set up Python (Windows)
+        if: runner.os == 'Windows'
+        uses: actions/setup-python@v3
+        with:
+          python-version: 3.7
 
       - name: Install dependencies (macOS)
         if: runner.os == 'macOS'
