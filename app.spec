@@ -30,7 +30,7 @@ PYCRYPTO_MIN_VERSION = "2.6.1"
 # Main
 # ----------------------------------------------------------------------------
 
-py_lib_path = "c:\hostedtoolcache\windows\python\3.7.9\x64\lib\site-packages"  # First entry is usually the main 'lib' folder
+py_lib_path = "c:\\hostedtoolcache\\windows\\python\\3.7.9\\x64\\lib\\site-packages"  # First entry is usually the main 'lib' folder
 print(py_lib_path)
 
 cipher_obj = None
