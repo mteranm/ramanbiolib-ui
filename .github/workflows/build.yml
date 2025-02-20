@@ -21,6 +21,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Force Intel (x86_64) architecture
+        if: runner.os == 'macOS'
+        run: |
+          export RUNNER_ARCH=x86_64  # Force Intel architecture
+
       - name: Set up Python
         uses: actions/setup-python@v3
         with:
