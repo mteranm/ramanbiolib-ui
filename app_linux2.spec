@@ -59,6 +59,7 @@ exe = EXE(pyz,
           strip=False,
           upx=False,
           console=DEBUG,
+          icon="icon.ico"
         )
 
 COLLECT(exe,

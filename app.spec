@@ -51,6 +51,8 @@ a = Analysis(
         ("src/img/logo.png", "src/img/"),
         ("src/img/icfo.png", "src/img/"),
         ("src/img/uoc.png", "src/img/"),
+        (lib_path + "/ramanbiolib/db/raman_spectra_db.csv", "ramanbiolib/db"),
+        (lib_path + "/ramanbiolib/db/raman_peaks_db.csv", "ramanbiolib/db"),
         (py_lib_path + "/cefpython3/icudtl.dat", "cefpython3"),
         (py_lib_path + "/cefpython3/natives_blob.bin", "cefpython3"),
     ],
