@@ -30,8 +30,8 @@ a = Analysis(
         ("src/img/uoc.png", "src/img/"),
         (py_lib_path + "/ramanbiolib/db/raman_spectra_db.csv", "ramanbiolib/db"),
         (py_lib_path + "/ramanbiolib/db/raman_peaks_db.csv", "ramanbiolib/db"),
-        (py_lib_path + "/cefpython3/icudtl.dat", "cefpython3"),
-        (py_lib_path + "/cefpython3/natives_blob.bin", "cefpython3"),
+        #(py_lib_path + "/cefpython3/icudtl.dat", "cefpython3"),
+        #(py_lib_path + "/cefpython3/natives_blob.bin", "cefpython3"),
     ],
 )
 
