@@ -13,7 +13,7 @@ jobs:
   build:
     strategy:
       matrix:
-        os: [windows-latest, macos-10.15]  # Build for both Windows and macOS
+        os: [macos-latest]  # Build for both Windows and macOS
 
     runs-on: ${{ matrix.os }}
 
