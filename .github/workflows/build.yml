@@ -69,4 +69,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: ramanbiolib-ui-${{ matrix.os }}  # Dynamically name the artifact
-          path: dist/ramanbiolib-ui.exe # Adjust path if necessary
+          path: dist/ramanbiolib-ui/ # Adjust path if necessary
