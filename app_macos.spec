@@ -41,23 +41,31 @@ if not os.environ.get("PYINSTALLER_CEFPYTHON3_HOOK_SUCCEEDED", None):
 pyz = PYZ(a.pure, a.zipped_data, cipher=cipher_obj)
 
 # Use BUNDLE for macOS to create a .app file
-app = BUNDLE(
+
+xe = EXE(
     pyz,
     a.scripts,
-    exclude_binaries=True,
-    name="ramanbiolib-ui",
-    debug=True,
-    strip=False,
-    upx=False,
-    console=True,
-)
-
-COLLECT(
-    app,
     a.binaries,
     a.zipfiles,
     a.datas,
+    [],
+    name='ramanbiolib-ui',
+    debug=True,
+    bootloader_ignore_signals=False,
     strip=False,
     upx=False,
-    name="ramanbiolib-ui"
+    upx_exclude=[],
+    runtime_tmpdir=None,
+    console=True,
+    disable_windowed_traceback=False,
+    argv_emulation=False,
+    target_arch=None,
+    codesign_identity=None,
+    entitlements_file=None,
+    icon=icon
 )
+
+app = BUNDLE(exe,
+    name='ramanbiolib-ui.app',
+    icon=None,
+    bundle_identifier=None)
