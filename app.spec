@@ -30,8 +30,8 @@ PYCRYPTO_MIN_VERSION = "2.6.1"
 # Main
 # ----------------------------------------------------------------------------
 
-lib_path = "c:\hostedtoolcache\windows\python\3.7.9\x64\lib\site-packages"  # First entry is usually the main 'lib' folder
-print(lib_path)
+py_lib_path = "c:\hostedtoolcache\windows\python\3.7.9\x64\lib\site-packages"  # First entry is usually the main 'lib' folder
+print(py_lib_path)
 
 cipher_obj = None
 
@@ -51,8 +51,8 @@ a = Analysis(
         ("src/img/logo.png", "src/img/"),
         ("src/img/icfo.png", "src/img/"),
         ("src/img/uoc.png", "src/img/"),
-        (lib_path + "/cefpython3/icudtl.dat", "cefpython3"),
-        (lib_path + "/cefpython3/natives_blob.bin", "cefpython3"),
+        (py_lib_path + "/cefpython3/icudtl.dat", "cefpython3"),
+        (py_lib_path + "/cefpython3/natives_blob.bin", "cefpython3"),
     ],
 )
 
