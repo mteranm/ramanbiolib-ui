@@ -3,17 +3,17 @@ name: Build PyInstaller App
 on:
   push:
     branches:
-      - main   # This triggers the build when changes are pushed to the 'main' branch
+      - main  # Trigger build when changes are pushed to 'main'
   pull_request:
     branches:
       - main
-  workflow_dispatch:   # Allows manual trigger of the workflow
+  workflow_dispatch:   # Allow manual trigger of the workflow
 
 jobs:
   build:
     strategy:
       matrix:
-        os: [windows-latest]  # Define platforms in the matrix
+        os: [windows-latest, macos-10.15]  # Build for both Windows and macOS
 
     runs-on: ${{ matrix.os }}
 
@@ -21,18 +21,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Install Visual C++ Redistributable
-        run: |
-          choco install vcredist2010 -y
-        shell: powershell
-
-      - name: Check for VC++ Redistributable
-        run: |
-          if (-Not (Get-Command "vcredist_x64.exe" -ErrorAction SilentlyContinue)) {
-            Write-Output "VC++ Redistributable not installed."
-          }
-        shell: powershell
-        
       - name: Set up Python
         uses: actions/setup-python@v3
         with:
@@ -44,29 +32,31 @@ jobs:
           pip install pyinstaller
           pip install -r requirements.txt
 
-      - name: Find package data files (CSV)
+      - name: Install Visual C++ Redistributable (Windows)
+        if: runner.os == 'Windows'
         run: |
-          python -c "import os, ramanbiolib; print(os.path.join(os.path.dirname(ramanbiolib.__file__), 'db'))" > data_directory.txt
+          choco install vcredist2010 -y
+        shell: powershell
 
-      - name: Set DATA_DIR based on OS
+      - name: Build the application using PyInstaller (Windows)
+        if: runner.os == 'Windows'
         run: |
-          $env:DATA_DIR = Get-Content -Path "data_directory.txt" | Out-String
+          pyinstaller -y app_win.spec --clean
 
-      #- name: Add binary and data files to PyInstaller
-      #  run: |
-      #    pyinstaller --add-data "src/templates/index.html;src/templates" src/app.py
-
-      - name: Build the application using PyInstaller
+      - name: Build the application using PyInstaller (macOS)
+        if: runner.os == 'macOS'
         run: |
-          pyinstaller -y app.spec --clean # Build your application with PyInstaller
+          pyinstaller -y app_macos.spec --clean
 
-      - name: List generated files (Windows)
+      - name: List generated files
         run: |
-          Get-ChildItem -Path dist/ramanbiolib-ui -Recurse
-        shell: pwsh
+          ls -R dist/
+        shell: bash
 
       - name: Upload the executable as an artifact
         uses: actions/upload-artifact@v4
         with:
-          name: ramanbiolib-ui-${{ matrix.os }}  # Dynamically name the artifact
-          path: dist/ramanbiolib-ui/ # Adjust path if necessary
+          name: ramanbiolib-ui-${{ runner.os }}
+          path: |
+            dist/ramanbiolib-ui/
+            dist/ramanbiolib-ui.app/
