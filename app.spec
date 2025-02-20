@@ -8,8 +8,6 @@ import cefpython3
 CEF_PATH = os.path.dirname(cefpython3.__file__)
 print(os.path.dirname(cefpython3.__file__))
 
-print(os.litdir(CEF_PATH))
-
 block_cipher = None
 
 # Collect files dynamically
