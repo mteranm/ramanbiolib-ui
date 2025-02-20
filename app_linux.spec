@@ -1,7 +1,11 @@
 # -*- mode: python ; coding: utf-8 -*-
 
+import site
 from glob import glob
 from PyInstaller.utils.hooks import collect_dynamic_libs, collect_data_files
+
+lib_path = site.getsitepackages()[0]  # First entry is usually the main 'lib' folder
+print(lib_path)
 
 block_cipher = None
 
@@ -17,7 +21,7 @@ a = Analysis(
     datas=[
         ("src/static/*", "src/static"), 
         ("src/img/*", "src/img"), 
-        ('.venv/lib/python3.7/site-packages/ramanbiolib/db/*.csv', 'ramanbiolib/db'),
+        (lib_path + '/ramanbiolib/db/*.csv', 'ramanbiolib/db'),
         ("src/templates/*", "src/templates"), 
         *collect_data_files('cefpython3')
     ],

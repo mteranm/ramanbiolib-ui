@@ -1,6 +1,11 @@
 # -*- mode: python ; coding: utf-8 -*-
 
-from glob import glob
+import site
+from PyInstaller.utils.hooks import collect_dynamic_libs, collect_data_files
+
+lib_path = site.getsitepackages()[0]  # First entry is usually the main 'lib' folder
+print(lib_path)
+
 from PyInstaller.utils.hooks import collect_dynamic_libs, collect_data_files
 
 DEBUG = True
@@ -11,6 +16,9 @@ a = Analysis(
     pathex=['.'],
     hookspath=["."],  # To find "hook-cefpython3.py"
     binaries=[
+        ('/usr/lib/x86_64-linux-gnu/libnss3.so', '.'),
+        ('/usr/lib/x86_64-linux-gnu/nss/libsoftokn3.so', '.'),
+        ('/usr/lib/x86_64-linux-gnu/nss/libnssckbi.so', '.'),
         *collect_dynamic_libs('cefpython3')
     ],
     datas=[
@@ -23,6 +31,11 @@ a = Analysis(
         ("src/img/logo.png", "src/img/"),
         ("src/img/icfo.png", "src/img/"),
         ("src/img/uoc.png", "src/img/"),
+        (lib_path + "/ramanbiolib/db/raman_spectra_db.csv", "ramanbiolib/db"),
+        (lib_path + "/ramanbiolib/db/raman_peaks_db.csv", "ramanbiolib/db"),
+#        (lib_path + "/cefpython3/icudtl.dat", "cefpython3"),
+#        (lib_path + "/cefpython3/natives_blob.bin", "cefpython3"),
+        *collect_data_files('cefpython3')
     ],
     hiddenimports=[],
     hooksconfig={},
