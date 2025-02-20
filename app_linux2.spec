@@ -6,7 +6,9 @@ from PyInstaller.utils.hooks import collect_dynamic_libs, collect_data_files
 lib_path = site.getsitepackages()[0]  # First entry is usually the main 'lib' folder
 print(lib_path)
 
-from PyInstaller.utils.hooks import collect_dynamic_libs, collect_data_files
+specpath = os.path.dirname(os.path.abspath(SPEC)) 
+icon = os.path.join(specpath, 'icon.png')
+print(icon)
 
 DEBUG = True
 block_cipher = None
@@ -33,6 +35,7 @@ a = Analysis(
         ("src/img/uoc.png", "src/img/"),
         (lib_path + "/ramanbiolib/db/raman_spectra_db.csv", "ramanbiolib/db"),
         (lib_path + "/ramanbiolib/db/raman_peaks_db.csv", "ramanbiolib/db"),
+        ('icon.png', '.'),
 #        (lib_path + "/cefpython3/icudtl.dat", "cefpython3"),
 #        (lib_path + "/cefpython3/natives_blob.bin", "cefpython3"),
         *collect_data_files('cefpython3')
@@ -51,21 +54,24 @@ pyz = PYZ(a.pure,
           a.zipped_data,
           cipher=block_cipher)
 
-exe = EXE(pyz,
-          a.scripts,
-          exclude_binaries=True,
-          name="ramanbiolib-ui",
-          debug=DEBUG,
-          strip=False,
-          upx=False,
-          console=DEBUG,
-          icon="icon.ico"
-        )
-
-COLLECT(exe,
-        a.binaries,
-        a.zipfiles,
-        a.datas,
-        strip=False,
-        upx=False,
-        name="ramanbiolib-ui")
+exe = EXE(
+    pyz,
+    a.scripts,
+    a.binaries,
+    a.zipfiles,
+    a.datas,
+    [],
+    name='ramanbiolib-ui',
+    debug=True,
+    bootloader_ignore_signals=False,
+    strip=False,
+    upx=False,
+    upx_exclude=[],
+    runtime_tmpdir=None,
+    console=True,
+    disable_windowed_traceback=False,
+    argv_emulation=False,
+    target_arch=None,
+    codesign_identity=None,
+    entitlements_file=None,
+)
