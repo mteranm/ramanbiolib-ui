@@ -1,70 +1,78 @@
-# -*- mode: python ; coding: utf-8 -*-
+# -*- mode: python -*-
+# -*- coding: utf-8 -*-
+
+"""
+This is a PyInstaller spec file.
+"""
 
 import os
-import glob
-from PyInstaller.utils.hooks import collect_dynamic_libs, collect_data_files
-import cefpython3
+from PyInstaller.building.api import PYZ, EXE, COLLECT
+from PyInstaller.building.build_main import Analysis
+from PyInstaller.utils.hooks import is_module_satisfies
+from PyInstaller.archive.pyz_crypto import PyiBlockCipher
 
-CEF_PATH = os.path.dirname(cefpython3.__file__)
-print(os.path.dirname(cefpython3.__file__))
+# Constants
+DEBUG = os.environ.get("CEFPYTHON_PYINSTALLER_DEBUG", False)
+PYCRYPTO_MIN_VERSION = "2.6.1"
 
-block_cipher = None
+# Set this secret cipher to some secret value. It will be used
+# to encrypt archive package containing your app's bytecode
+# compiled Python modules, to make it harder to extract these
+# files and decompile them. If using secret cipher then you
+# must install pycrypto package by typing: "pip install pycrypto".
+# Note that this will only encrypt archive package containing
+# imported modules, it won't encrypt the main script file
+# (wxpython.py). The names of all imported Python modules can be
+# still accessed, only their contents are encrypted.
 
-print(f"cef libs: {collect_dynamic_libs('cefpython3')}")
-print(f"cef data: {collect_data_files('cefpython3')}")
-print("After ---------------------------")
-print("cef data after: " + str([ (src, target.replace("cefpython3", ".")) for src, target in collect_data_files("cefpython3") ]))
+# ----------------------------------------------------------------------------
+# Main
+# ----------------------------------------------------------------------------
 
+
+cipher_obj = None
 
 a = Analysis(
-    ['src/app.py'],
-    pathex=['.'],
-    binaries=[
-        *collect_dynamic_libs('cefpython3'),
-        ("C:/Windows/System32/MSVCR100.dll", "."),
-        # Manually add CEF data files like .pak files
-    ],  # Collect CEF shared libraries
+    ["src/app.py"],
+    hookspath=["."],  # To find "hook-cefpython3.py"
+    cipher=cipher_obj,
+    win_private_assemblies=True,
+    win_no_prefer_redirects=True,
     datas=[
-        *[ (src, target.replace("cefpython3", ".")) for src, target in collect_data_files("cefpython3") ],
         ("src/templates/index.html", "src/templates/"),
         ("src/templates/results.html", "src/templates/"),
         ("src/templates/search.html", "src/templates/"),
         ("src/static/scripts.js", "src/static/"),
         ("src/static/jquery.min.js.js", "src/static/"),
         ("src/static/styles.css", "src/static/"),
+        ("src/img/logo.png", "src/img/"),
+        ("src/img/icfo.png", "src/img/"),
+        ("src/img/uoc.png", "src/img/"),
     ],
-    hiddenimports=["cefpython3"],
-    hookspath=[],
-    hooksconfig={},
-    runtime_hooks=[],
-    excludes=['widevinecdm.dll'],
-    win_no_prefer_redirects=False,
-    win_private_assemblies=False,
-    cipher=block_cipher,
-    noarchive=False,
 )
-pyz = PYZ(a.pure, a.zipped_data, cipher=block_cipher)
 
-exe = EXE(
-    pyz,
-    a.scripts,
-    a.binaries,
-    a.zipfiles,
-    a.datas,
-    [],
-    name='ramanbiolib-ui',
-    debug=True,
-    bootloader_ignore_signals=False,
-    strip=False,
-    upx=True,
-    upx_exclude=[],
-    runtime_tmpdir=None,
-    console=True,
-    disable_windowed_traceback=False,
-    argv_emulation=False,
-    target_arch=None,
-    codesign_identity=None,
-    entitlements_file=None,
-    onedir=True,
-    onefile=False
-)
+if not os.environ.get("PYINSTALLER_CEFPYTHON3_HOOK_SUCCEEDED", None):
+    raise SystemExit("Error: Pyinstaller hook-cefpython3.py script was "
+                     "not executed or it failed")
+
+pyz = PYZ(a.pure,
+          a.zipped_data,
+          cipher=cipher_obj)
+
+exe = EXE(pyz,
+          a.scripts,
+          exclude_binaries=True,
+          name="ramanbiolib-ui",
+          debug=DEBUG,
+          strip=False,
+          upx=False,
+          console=DEBUG,
+        )
+
+COLLECT(exe,
+        a.binaries,
+        a.zipfiles,
+        a.datas,
+        strip=False,
+        upx=False,
+        name="ramanbiolib-ui")
