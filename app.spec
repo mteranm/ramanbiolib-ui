@@ -10,23 +10,10 @@ print(os.path.dirname(cefpython3.__file__))
 
 block_cipher = None
 
-# Collect files dynamically
-static_files = glob.glob(os.path.join('src', 'static', '*'))
-img_files = glob.glob(os.path.join('src', 'img', '*'))
-template_files = glob.glob(os.path.join('src', 'templates', '*'))
+print(f"cef libs: {collect_dynamic_libs('cefpython3')}")
+print(f"cef data: {collect_data_files('cefpython3')}")
+print(f"cef data after: {[ (v[0], v[1].replace('cefpython', '.\')) for v in collect_data_files('cefpython3')]}")
 
-# Create the datas list
-datas = [
-    (file, 'static') for file in static_files
-] + [
-    (file, 'img') for file in img_files
-] + [
-    (file, 'templates') for file in template_files
-]
-
-print(collect_dynamic_libs('cefpython3'),)
-
-print(collect_data_files('cefpython3'),)
 
 a = Analysis(
     ['src/app.py'],
@@ -37,16 +24,13 @@ a = Analysis(
         # Manually add CEF data files like .pak files
     ],  # Collect CEF shared libraries
     datas=[
-        *collect_data_files('cefpython3'),
+        *[ (v[0], v[1].replace("cefpython", ".\")) for v in collect_data_files('cefpython3')],
         ("src/templates/index.html", "src/templates/"),
         ("src/templates/results.html", "src/templates/"),
         ("src/templates/search.html", "src/templates/"),
         ("src/static/scripts.js", "src/static/"),
         ("src/static/jquery.min.js.js", "src/static/"),
         ("src/static/styles.css", "src/static/"),
-        ("c:\\hostedtoolcache\\windows\\python\\3.7.9\\x64\\lib\\site-packages\\cefpython3\\cef.pak", "."),  
-        #("c:\hostedtoolcache\windows\python\3.7.9\x64\lib\site-packages\cefpython\devtools_resources.pak", "."),  
-        #("c:\hostedtoolcache\windows\python\3.7.9\x64\lib\site-packages\cefpython3\locales", "./locales"),  # If locales are missing
     ],
     hiddenimports=["cefpython3"],
     hookspath=[],
