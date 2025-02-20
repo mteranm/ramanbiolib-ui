@@ -6,6 +6,7 @@ This is a PyInstaller spec file.
 """
 
 import os
+import site
 from PyInstaller.building.api import PYZ, EXE, COLLECT
 from PyInstaller.building.build_main import Analysis
 from PyInstaller.utils.hooks import is_module_satisfies
@@ -29,6 +30,8 @@ PYCRYPTO_MIN_VERSION = "2.6.1"
 # Main
 # ----------------------------------------------------------------------------
 
+lib_path = site.getsitepackages()[0]  # First entry is usually the main 'lib' folder
+print(lib_path)
 
 cipher_obj = None
 
@@ -48,6 +51,8 @@ a = Analysis(
         ("src/img/logo.png", "src/img/"),
         ("src/img/icfo.png", "src/img/"),
         ("src/img/uoc.png", "src/img/"),
+        (lib_path + "/cefpython3/icudtl.dat", "cefpython3"),
+        (lib_path + "/cefpython3/natives_blob.bin", "cefpython3"),
     ],
 )
 
