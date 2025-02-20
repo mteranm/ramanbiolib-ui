@@ -42,7 +42,7 @@ pyz = PYZ(a.pure, a.zipped_data, cipher=cipher_obj)
 
 # Use BUNDLE for macOS to create a .app file
 
-xe = EXE(
+exe = EXE(
     pyz,
     a.scripts,
     a.binaries,
@@ -62,7 +62,6 @@ xe = EXE(
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
-    icon=icon
 )
 
 app = BUNDLE(exe,
