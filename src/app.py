@@ -10,21 +10,21 @@ def main():
     with open(get_resource_path("src/templates/index.html"), "r", encoding="utf-8") as file:
         html_content = file.read()
 
-    ## Read styles
-    #with open(get_resource_path("src/static/styles.css"), "r", encoding="utf-8") as file:
-    #    styles = file.read()
+    # Read styles
+    with open(get_resource_path("src/static/styles.css"), "r", encoding="utf-8") as file:
+        styles = file.read()
 
-    ## Read scripts
-    #with open(get_resource_path("src/static/scripts.js"), "r", encoding="utf-8") as file:
-    #    scripts = file.read()
+    # Read scripts
+    with open(get_resource_path("src/static/scripts.js"), "r", encoding="utf-8") as file:
+        scripts = file.read()
 
-    ## Read JQuery
-    #with open(get_resource_path("src/static/jquery.min.js.js"), "r", encoding="utf-8") as file:
-    #    jq_scripts = file.read()
+    # Read JQuery
+    with open(get_resource_path("src/static/jquery.min.js.js"), "r", encoding="utf-8") as file:
+        jq_scripts = file.read()
 
-    ## Read search box HTML
-    #with open(get_resource_path("src/templates/search.html"), "r", encoding="utf-8") as file:
-    #    search_box_html = file.read()
+    # Read search box HTML
+    with open(get_resource_path("src/templates/search.html"), "r", encoding="utf-8") as file:
+        search_box_html = file.read()
 
     html_content = html_content.format(
         jquery_script=jq_scripts,

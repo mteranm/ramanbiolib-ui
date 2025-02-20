@@ -8,6 +8,8 @@ import cefpython3
 CEF_PATH = os.path.dirname(cefpython3.__file__)
 print(os.path.dirname(cefpython3.__file__))
 
+print(os.litdir(CEF_PATH))
+
 block_cipher = None
 
 # Collect files dynamically
@@ -39,9 +41,14 @@ a = Analysis(
     datas=[
         *collect_data_files('cefpython3'),
         ("src/templates/index.html", "src/templates/"),
-        ("c:\\hostedtoolcache\\windows\\python\\3.7.9\\x64\\lib\\site-packages\\cefpython3\\cef.pak", "cefpython3"),  
-        #("c:\hostedtoolcache\windows\python\3.7.9\x64\lib\site-packages\cefpython\devtools_resources.pak", "cefpython3"),  
-        #("c:\hostedtoolcache\windows\python\3.7.9\x64\lib\site-packages\cefpython3\locales", "cefpython3/locales"),  # If locales are missing
+        ("src/templates/results.html", "src/templates/"),
+        ("src/templates/search.html", "src/templates/"),
+        ("src/static/scripts.js", "src/static/"),
+        ("src/static/jquery.min.js.js", "src/static/"),
+        ("src/static/styles.css", "src/static/"),
+        ("c:\\hostedtoolcache\\windows\\python\\3.7.9\\x64\\lib\\site-packages\\cefpython3\\cef.pak", "."),  
+        #("c:\hostedtoolcache\windows\python\3.7.9\x64\lib\site-packages\cefpython\devtools_resources.pak", "."),  
+        #("c:\hostedtoolcache\windows\python\3.7.9\x64\lib\site-packages\cefpython3\locales", "./locales"),  # If locales are missing
     ],
     hiddenimports=["cefpython3"],
     hookspath=[],
@@ -75,5 +82,6 @@ exe = EXE(
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
-    onedir=True
+    onedir=True,
+    onefile=False
 )
