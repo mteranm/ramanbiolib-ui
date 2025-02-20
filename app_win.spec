@@ -33,6 +33,10 @@ PYCRYPTO_MIN_VERSION = "2.6.1"
 py_lib_path = "c:\\hostedtoolcache\\windows\\python\\3.7.9\\x64\\lib\\site-packages"  # First entry is usually the main 'lib' folder
 print(py_lib_path)
 
+specpath = os.path.dirname(os.path.abspath(SPEC)) 
+icon = os.path.join(specpath, 'icon.ico')
+print(icon)
+
 cipher_obj = None
 
 a = Analysis(
@@ -67,20 +71,25 @@ pyz = PYZ(a.pure,
           a.zipped_data,
           cipher=cipher_obj)
 
-exe = EXE(pyz,
-          a.scripts,
-          exclude_binaries=True,
-          name="ramanbiolib-ui",
-          debug=True,
-          strip=False,
-          upx=False,
-          console=True,
-        )
-
-COLLECT(exe,
-        a.binaries,
-        a.zipfiles,
-        a.datas,
-        strip=False,
-        upx=False,
-        name="ramanbiolib-ui")
+exe = EXE(
+    pyz,
+    a.scripts,
+    a.binaries,
+    a.zipfiles,
+    a.datas,
+    [],
+    name='ramanbiolib-ui',
+    debug=True,
+    bootloader_ignore_signals=False,
+    strip=False,
+    upx=False,
+    upx_exclude=[],
+    runtime_tmpdir=None,
+    console=True,
+    disable_windowed_traceback=False,
+    argv_emulation=False,
+    target_arch=None,
+    codesign_identity=None,
+    entitlements_file=None,
+    icon=icon
+)
