@@ -63,10 +63,10 @@ exe = EXE(pyz,
           a.scripts,
           exclude_binaries=True,
           name="ramanbiolib-ui",
-          debug=DEBUG,
+          debug=True,
           strip=False,
           upx=False,
-          console=DEBUG,
+          console=True,
         )
 
 COLLECT(exe,
