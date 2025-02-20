@@ -12,7 +12,8 @@ block_cipher = None
 
 print(f"cef libs: {collect_dynamic_libs('cefpython3')}")
 print(f"cef data: {collect_data_files('cefpython3')}")
-print(f"cef data after: {[ (v[0], v[1].replace('cefpython', '.\')) for v in collect_data_files('cefpython3')]}")
+print("After ---------------------------")
+print("cef data after: " + str([ (src, target.replace("cefpython3", ".")) for src, target in collect_data_files("cefpython3") ]))
 
 
 a = Analysis(
@@ -24,7 +25,7 @@ a = Analysis(
         # Manually add CEF data files like .pak files
     ],  # Collect CEF shared libraries
     datas=[
-        *[ (v[0], v[1].replace("cefpython", ".\")) for v in collect_data_files('cefpython3')],
+        *[ (src, target.replace("cefpython3", ".")) for src, target in collect_data_files("cefpython3") ],
         ("src/templates/index.html", "src/templates/"),
         ("src/templates/results.html", "src/templates/"),
         ("src/templates/search.html", "src/templates/"),
