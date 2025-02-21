@@ -73,5 +73,5 @@ jobs:
         with:
           name: ramanbiolib-ui-${{ runner.os }}
           path: |
-            dist/ramanbiolib-ui/
+            dist/ramanbiolib-ui.exe
             dist/ramanbiolib-ui.app/
