@@ -1,10 +1,24 @@
+import sys
+import platform
 from cefpython3 import cefpython as cef
 from handlers.jshandler import JSHandler
 from handlers.linkhandler import ExternalLinkHandler
 from utils.files import get_resource_path, image_to_base64
 
 def main():
-    cef.Initialize()
+
+    if getattr(sys, 'frozen', False) and platform.system() == 'Windows':
+        print("here")
+        settings = {
+            "browser_subprocess_path": get_resource_path("subprocess.exe"),
+            "locales_dir_path": get_resource_path("locales"),
+            "resources_dir_path": get_resource_path("")
+        }
+        print(settings)
+        cef.Initialize(settings)
+    else:
+        print("not heeere!")
+        cef.Initialize()
 
     # Read index HTML
     with open(get_resource_path("src/templates/index.html"), "r", encoding="utf-8") as file:

@@ -35,7 +35,6 @@ a = Analysis(
         ("src/img/uoc.png", "src/img/"),
         (lib_path + "/ramanbiolib/db/raman_spectra_db.csv", "ramanbiolib/db"),
         (lib_path + "/ramanbiolib/db/raman_peaks_db.csv", "ramanbiolib/db"),
-        ('icon.png', '.'),
 #        (lib_path + "/cefpython3/icudtl.dat", "cefpython3"),
 #        (lib_path + "/cefpython3/natives_blob.bin", "cefpython3"),
         *collect_data_files('cefpython3')
@@ -74,5 +73,4 @@ exe = EXE(
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
-    icon=icon
 )
