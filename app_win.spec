@@ -11,6 +11,7 @@ from PyInstaller.building.api import PYZ, EXE, COLLECT
 from PyInstaller.building.build_main import Analysis
 from PyInstaller.utils.hooks import is_module_satisfies
 from PyInstaller.archive.pyz_crypto import PyiBlockCipher
+from PyInstaller.utils.hooks import collect_data_files
 
 # Constants
 DEBUG = os.environ.get("CEFPYTHON_PYINSTALLER_DEBUG", False)
@@ -59,7 +60,8 @@ a = Analysis(
         (py_lib_path + "/ramanbiolib/db/raman_peaks_db.csv", "ramanbiolib/db"),
         (py_lib_path + "/cefpython3/icudtl.dat", "cefpython3"),
         (py_lib_path + "/cefpython3/natives_blob.bin", "cefpython3"),
-        ('icon.ico', '.')
+        *collect_data_files('cefpython3'),
+        ('icon.ico', '.'),
     ],
 )
 
