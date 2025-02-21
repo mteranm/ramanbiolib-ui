@@ -42,7 +42,7 @@ cipher_obj = None
 
 a = Analysis(
     ["src/app.py"],
-    hookspath=["."],  # To find "hook-cefpython3.py"
+    hookspath=["src/hooks"],  # To find "hook-cefpython3.py"
     cipher=cipher_obj,
     win_private_assemblies=True,
     win_no_prefer_redirects=True,

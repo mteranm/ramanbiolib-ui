@@ -1,9 +1,10 @@
 <picture align="center">
-  <img alt="Pandas Logo" style="background:white; padding: 20px;" src="img/logo.png">
+  <img alt="RamanBiolib logo" style="background:white; padding: 20px;" src="src/img/logo.png">
 </picture>
 
-# RamanBiolib UI: A standalone UI for Biomolecule Identifiaction by means of Raman Spectroscopy using RamanBiolib 
+# RamanBiolib UI:  
 
+A standalone UI for Biomolecule Identifiaction by means of Raman Spectroscopy using RamanBiolib
 
 ## Getting started
 

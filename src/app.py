@@ -8,7 +8,6 @@ from utils.files import get_resource_path, image_to_base64
 def main():
 
     if getattr(sys, 'frozen', False) and platform.system() == 'Windows':
-        print("here")
         settings = {
             "browser_subprocess_path": get_resource_path("subprocess.exe"),
             "locales_dir_path": get_resource_path("locales"),
@@ -17,7 +16,6 @@ def main():
         print(settings)
         cef.Initialize(settings)
     else:
-        print("not heeere!")
         cef.Initialize()
 
     # Read index HTML

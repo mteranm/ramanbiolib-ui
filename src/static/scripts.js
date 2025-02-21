@@ -81,7 +81,7 @@ function onSearchClick() {
         reader.onload = function(e) {
             var fileContent = e.target.result;  // The content of the file (as a string or binary)
             // Do something with file content (e.g., send to server)
-            pyHandler.slk_search(fileContent, windowSize, tableN, plotN);
+            pyHandler.slk_search(fileContent, fileName, windowSize, tableN, plotN);
         };
 
         // Read the file (e.g., as text)
@@ -132,7 +132,8 @@ function onPMSearchClick() {
                 // Do something with file content (e.g., send to server)
                 var inputDict = {
                     csv_data: fileContent,
-                    prominence: prominence
+                    prominence: prominence,
+                    filename: fileName
                 }
                 pyHandler.pm_search(sourceType, sortCol, tolerance, penalty, resultsN, plotN, inputDict)
             };

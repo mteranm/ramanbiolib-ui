@@ -7,9 +7,9 @@ class JSHandler:
         self.result_df = None
         self.browser = browser
 
-    def slk_search(self, spectra, window_size, table_n, plot_n):
+    def slk_search(self, spectra, filename, window_size, table_n, plot_n):
         try:
-            result_html = spectra_slk_search(spectra, int(window_size), int(table_n), int(plot_n))
+            result_html = spectra_slk_search(spectra, filename, int(window_size), int(table_n), int(plot_n))
             self.browser.ExecuteFunction("updateResult", result_html)
         except Exception as e:
             self.browser.ExecuteFunction("updateResult", f"""<div class="error results">

@@ -21,25 +21,35 @@ def format_result_html(table, full_table, plot):
         plot=plot
     )
 
-def load_spectrum(csv_data):
+def load_wire_txt(csv_data):
     spectra_df = (
         pd.read_csv(StringIO(csv_data), delimiter="\t", header=0, names=['wavenumbers', 'intensity', 'empty'])
         .drop("empty", axis=1)
         .sort_values("wavenumbers")
     )
-    x = np.array(spectra_df['wavenumbers'])
-    y = np.array(spectra_df['intensity'])
+    return np.array(spectra_df['wavenumbers']), np.array(spectra_df['intensity'])
+
+def load_csv(csv_data):
+    spectra_df = (
+        pd.read_csv(StringIO(csv_data), delimiter=",", header=0, names=['wavenumbers', 'intensity'])
+        .sort_values("wavenumbers")
+    )
+    return np.array(spectra_df['wavenumbers']), np.array(spectra_df['intensity'])
+
+def load_spectrum(csv_data, filename):
+    print(filename)
+    x, y = load_wire_txt(csv_data) if ".txt" in filename else load_csv(csv_data)
     f = interpolate.interp1d(x, y)
     wavenumbers = np.arange(max(int(np.ceil(x.min())), 450), min(int(x.max()), 1800) + 1)
     y = f(wavenumbers)
     y = (y - np.min(y)) / (np.max(y) - np.min(y))
     return y, wavenumbers
 
-def spectra_slk_search(csv_data, w, results_n, plot_n):
+def spectra_slk_search(csv_data, filename, w, results_n, plot_n):
     w = int(w)
     results_n = int(results_n)
     plot_n = int(plot_n)
-    y, wavenumbers = load_spectrum(csv_data)
+    y, wavenumbers = load_spectrum(csv_data, filename)
     spectra_search = SpectraSimilaritySearch(wavenumbers=wavenumbers)
     search_results_obj = (
         spectra_search.search(y, 
@@ -64,7 +74,7 @@ def get_peaks(source_type, input_dict):
         wavenumbers = np.arange(450, 1801)
         peaks = np.searchsorted(wavenumbers, peaks_wavenumbers)
         return peaks, [], wavenumbers
-    y, wavenumbers = load_spectrum(input_dict['csv_data'])
+    y, wavenumbers = load_spectrum(input_dict['csv_data'], input_dict['filename'])
     peaks, _ = find_peaks(y, prominence=float(input_dict['prominence']))
     return peaks, y, wavenumbers
 

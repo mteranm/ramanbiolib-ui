@@ -1,9 +1,9 @@
 name: Build PyInstaller App
 
 on:
-  push:
-    branches:
-      - main  # Trigger build when changes are pushed to 'main'
+  #push:
+  #  branches:
+  #    - main  # Trigger build when changes are pushed to 'main'
   pull_request:
     branches:
       - main

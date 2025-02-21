@@ -16,7 +16,7 @@ print(py_lib_path)
 
 a = Analysis(
     ["src/app.py"],
-    hookspath=["."],  # To find "hook-cefpython3.py"
+    hookspath=["src/hooks"],  # To find "hook-cefpython3.py"
     cipher=cipher_obj,
     datas=[
         ("src/templates/index.html", "src/templates/"),
