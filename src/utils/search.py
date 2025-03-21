@@ -62,7 +62,7 @@ def spectra_slk_search(csv_data, filename, w, results_n, plot_n):
         .rename({"similarity_score": "slk_score"}, axis=1)
         [['group', 'component', 'laser', 'reference', 'slk_score']]
     )
-    return format_result_html(
+    return format_df_result(search_results[:results_n]), format_result_html(
         format_df_result(search_results[:results_n]).to_html(render_links=True), 
         format_df_result(search_results).to_html(render_links=True), 
         search_results_obj.plot_results(n=plot_n).to_html(full_html=False)
@@ -110,7 +110,7 @@ def spectra_pm_search(source_type, sort_col, tolerance, penalty, results_n, plot
           'MR', 'RMR', 'IUR', 'PIUR']]
         .reset_index(drop=True)
     )
-    return format_result_html(
+    return format_df_result(search_results[:results_n]), format_result_html(
         format_df_result(search_results[:results_n]).to_html(render_links=True), 
         format_df_result(search_results).to_html(render_links=True), 
         search_results_obj.plot_results(n=plot_n, query_spectrum=y).to_html(full_html=False)

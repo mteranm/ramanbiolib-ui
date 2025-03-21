@@ -9,7 +9,7 @@ class JSHandler:
 
     def slk_search(self, spectra, filename, window_size, table_n, plot_n):
         try:
-            result_html = spectra_slk_search(spectra, filename, int(window_size), int(table_n), int(plot_n))
+            self.result_df, result_html = spectra_slk_search(spectra, filename, int(window_size), int(table_n), int(plot_n))
             self.browser.ExecuteFunction("updateResult", result_html)
         except Exception as e:
             self.browser.ExecuteFunction("updateResult", f"""<div class="error results">
@@ -19,7 +19,7 @@ class JSHandler:
 
     def pm_search(self, source_type, sort_col, tolerance, penalty, results_n, plot_n, input_dict):
         try:
-            result_html = spectra_pm_search(
+            self.result_df, result_html = spectra_pm_search(
                 source_type, sort_col, int(tolerance), penalty, int(results_n), int(plot_n), input_dict
             )
             self.browser.ExecuteFunction("updateResult", result_html)

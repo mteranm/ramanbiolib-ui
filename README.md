@@ -4,7 +4,7 @@
 
 # RamanBiolib UI:  
 
-A standalone UI for Biomolecule Identifiaction by means of Raman Spectroscopy using RamanBiolib
+A standalone UI for Biomolecule Identifiaction by means of Raman Spectroscopy using [RamanBiolib](https://github.com/mteranm/ramanbiolib)
 
 ## Getting started
 
