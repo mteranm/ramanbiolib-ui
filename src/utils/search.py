@@ -37,10 +37,11 @@ def load_csv(csv_data):
     return np.array(spectra_df['wavenumbers']), np.array(spectra_df['intensity'])
 
 def load_spectrum(csv_data, filename):
-    print(filename)
     x, y = load_wire_txt(csv_data) if ".txt" in filename else load_csv(csv_data)
     f = interpolate.interp1d(x, y)
     wavenumbers = np.arange(max(int(np.ceil(x.min())), 450), min(int(x.max()), 1800) + 1)
+    if len(wavenumbers) == 0:
+        raise Exception("The spectrum does not contain any wavenumber in the range 450-1800")
     y = f(wavenumbers)
     y = (y - np.min(y)) / (np.max(y) - np.min(y))
     return y, wavenumbers
@@ -87,13 +88,11 @@ def spectra_pm_search(source_type, sort_col, tolerance, penalty, results_n, plot
 
     peaks, y, wavenumbers = get_peaks(source_type, input_dict)
     print(f"Number of peaks: {len(peaks)}")
-    if len(peaks) > 130:
-        return """
-        <div class="error results">
-            <h2>Error</h2>
-            <span>The selected configuration extracts too many peaks from the specturm </span>
-        </div>
-        """
+    if len(peaks) > 100:
+        raise Exception("The selected configuration extracts too many peaks from the specturm. Increase the prominence threshold.")
+    elif len(peaks) == 0:
+        raise Exception("No peaks detected. Decrease the prominence threshold")
+
     spectra_search = SpectraSimilaritySearch(wavenumbers=wavenumbers)
     peaks_search = PeakMatchingSearch(wavenumbers)
 
@@ -113,5 +112,5 @@ def spectra_pm_search(source_type, sort_col, tolerance, penalty, results_n, plot
     return format_df_result(search_results[:results_n]), format_result_html(
         format_df_result(search_results[:results_n]).to_html(render_links=True), 
         format_df_result(search_results).to_html(render_links=True), 
-        search_results_obj.plot_results(n=plot_n, query_spectrum=y).to_html(full_html=False)
+        search_results_obj.plot_results(n=plot_n, query_spectrum=y, sort_col=sort_col).to_html(full_html=False)
     )
