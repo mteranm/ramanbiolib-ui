@@ -1,6 +1,6 @@
 import tkinter as tk
 from tkinter import filedialog
-from utils.search import spectra_slk_search, spectra_pm_search
+from ramanbiolibui.utils.search import spectra_slk_search, spectra_pm_search
 
 class JSHandler:
     def __init__(self, browser):

@@ -14,9 +14,9 @@ DEBUG = True
 block_cipher = None
 
 a = Analysis(
-    ["src/app.py"],
+    ["ramanbiolibui/app.py"],
     pathex=['.'],
-    hookspath=["src/hooks"],  # To find "hook-cefpython3.py"
+    hookspath=["ramanbiolibui/hooks"],  # To find "hook-cefpython3.py"
     binaries=[
         ('/usr/lib/x86_64-linux-gnu/libnss3.so', '.'),
         ('/usr/lib/x86_64-linux-gnu/nss/libsoftokn3.so', '.'),
@@ -24,15 +24,15 @@ a = Analysis(
         *collect_dynamic_libs('cefpython3')
     ],
     datas=[
-        ("src/templates/index.html", "src/templates/"),
-        ("src/templates/results.html", "src/templates/"),
-        ("src/templates/search.html", "src/templates/"),
-        ("src/static/scripts.js", "src/static/"),
-        ("src/static/jquery.min.js.js", "src/static/"),
-        ("src/static/styles.css", "src/static/"),
-        ("src/img/logo.png", "src/img/"),
-        ("src/img/icfo.png", "src/img/"),
-        ("src/img/uoc.png", "src/img/"),
+        ("ramanbiolibui/templates/index.html", "ramanbiolibui/templates/"),
+        ("ramanbiolibui/templates/results.html", "ramanbiolibui/templates/"),
+        ("ramanbiolibui/templates/search.html", "ramanbiolibui/templates/"),
+        ("ramanbiolibui/static/scripts.js", "ramanbiolibui/static/"),
+        ("ramanbiolibui/static/jquery.min.js.js", "ramanbiolibui/static/"),
+        ("ramanbiolibui/static/styles.css", "ramanbiolibui/static/"),
+        ("ramanbiolibui/img/logo.png", "ramanbiolibui/img/"),
+        ("ramanbiolibui/img/icfo.png", "ramanbiolibui/img/"),
+        ("ramanbiolibui/img/uoc.png", "src/img/"),
         (lib_path + "/ramanbiolib/db/raman_spectra_db.csv", "ramanbiolib/db"),
         (lib_path + "/ramanbiolib/db/raman_peaks_db.csv", "ramanbiolib/db"),
         *collect_data_files('cefpython3')

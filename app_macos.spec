@@ -15,19 +15,19 @@ py_lib_path = site.getsitepackages()[0]  # Uses macOS Python site-packages
 print(py_lib_path)
 
 a = Analysis(
-    ["src/app.py"],
-    hookspath=["src/hooks"],  # To find "hook-cefpython3.py"
+    ["ramanbiolibui/app.py"],
+    hookspath=["ramanbiolibui/hooks"],  # To find "hook-cefpython3.py"
     cipher=cipher_obj,
     datas=[
-        ("src/templates/index.html", "src/templates/"),
-        ("src/templates/results.html", "src/templates/"),
-        ("src/templates/search.html", "src/templates/"),
-        ("src/static/scripts.js", "src/static/"),
-        ("src/static/jquery.min.js.js", "src/static/"),
-        ("src/static/styles.css", "src/static/"),
-        ("src/img/logo.png", "src/img/"),
-        ("src/img/icfo.png", "src/img/"),
-        ("src/img/uoc.png", "src/img/"),
+        ("ramanbiolibui/templates/index.html", "ramanbiolibui/templates/"),
+        ("ramanbiolibui/templates/results.html", "ramanbiolibui/templates/"),
+        ("ramanbiolibui/templates/search.html", "ramanbiolibui/templates/"),
+        ("ramanbiolibui/static/scripts.js", "ramanbiolibui/static/"),
+        ("ramanbiolibui/static/jquery.min.js.js", "ramanbiolibui/static/"),
+        ("ramanbiolibui/static/styles.css", "ramanbiolibui/static/"),
+        ("ramanbiolibui/img/logo.png", "ramanbiolibui/img/"),
+        ("ramanbiolibui/img/icfo.png", "ramanbiolibui/img/"),
+        ("ramanbiolibui/img/uoc.png", "ramanbiolibui/img/"),
         (py_lib_path + "/ramanbiolib/db/raman_spectra_db.csv", "ramanbiolib/db"),
         (py_lib_path + "/ramanbiolib/db/raman_peaks_db.csv", "ramanbiolib/db"),
         #(py_lib_path + "/cefpython3/icudtl.dat", "cefpython3"),

@@ -168,3 +168,5 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+
+pip-wheel-metadata

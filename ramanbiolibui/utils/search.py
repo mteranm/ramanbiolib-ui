@@ -3,7 +3,7 @@ import pandas as pd
 from scipy import interpolate
 from scipy.signal import find_peaks
 from io import StringIO
-from utils.files import get_resource_path
+from ramanbiolibui.utils.files import get_resource_path
 from ramanbiolib.search import PeakMatchingSearch, SpectraSimilaritySearch
 
 def format_df_result(result_df):
@@ -13,7 +13,7 @@ def format_df_result(result_df):
 
 def format_result_html(table, full_table, plot):
     # Read results HTML
-    with open(get_resource_path("src/templates/results.html"), "r", encoding="utf-8") as file:
+    with open(get_resource_path("ramanbiolibui/templates/results.html"), "r", encoding="utf-8") as file:
         results_html = file.read()
     return results_html.format(
         table=table,
@@ -63,7 +63,7 @@ def spectra_slk_search(csv_data, filename, w, results_n, plot_n):
         .rename({"similarity_score": "slk_score"}, axis=1)
         [['type', 'id', 'component', 'laser', 'reference', 'slk_score']]
     )
-    return format_df_result(search_results[:results_n]), format_result_html(
+    return format_df_result(search_results), format_result_html(
         format_df_result(search_results[:results_n]).to_html(render_links=True), 
         format_df_result(search_results).to_html(render_links=True), 
         search_results_obj.plot_results(n=plot_n).to_html(full_html=False)
@@ -109,7 +109,7 @@ def spectra_pm_search(source_type, sort_col, tolerance, penalty, results_n, plot
           'MR', 'RMR', 'IUR', 'PIUR']]
         .reset_index(drop=True)
     )
-    return format_df_result(search_results[:results_n]), format_result_html(
+    return format_df_result(search_results), format_result_html(
         format_df_result(search_results[:results_n]).to_html(render_links=True), 
         format_df_result(search_results).to_html(render_links=True), 
         search_results_obj.plot_results(n=plot_n, query_spectrum=y, sort_col=sort_col).to_html(full_html=False)

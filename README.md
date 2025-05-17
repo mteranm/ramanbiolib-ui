@@ -1,5 +1,5 @@
 <picture align="center">
-  <img alt="RamanBiolib logo" style="background:white; padding: 20px;" src="src/img/logo.png">
+  <img alt="RamanBiolib logo" style="background:white; padding: 20px;" src="ramanbiolibui/img/logo.png">
 </picture>
 
 # RamanBiolib UI:  
@@ -8,7 +8,25 @@ A standalone UI for Biomolecule Identifiaction by means of Raman Spectroscopy us
 
 ## Getting started
 
+### Python package
+
+Installation:
+
+>
+> pip install git+https://github.com/mteranm/ramanbiolib-ui
+>
+
+Run:
+
+>
+> python ramanbiolib-ui
+>
+
+### Windows executable file
+
 Download the app executable file and start using RamanBiolib.
+
+> **Note**: This executable file is self-signed so Windows and/or Antivirus software can mark this as dangerous. The file is not unsecure is just a package from this open-source code created via PyInstaller. If you have concern about running the executable file, you can install Python version.
 
 ## How to use this tool
 
