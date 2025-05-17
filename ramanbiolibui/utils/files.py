@@ -1,15 +1,13 @@
 import os
 import sys
 import base64
+import pkg_resources
 
 def get_resource_path(relative_path):
     """ Get absolute path to a resource, works for dev and PyInstaller """
     if getattr(sys, 'frozen', False):  # Running as a PyInstaller bundle
-        base_path = sys._MEIPASS
-    else:
-        base_path = os.path.abspath(".")  # Running normally
-
-    return os.path.join(base_path, relative_path)
+        return os.path.join(sys._MEIPASS, relative_path)
+    return pkg_resources.resource_filename(__name__, relative_path).replace("/ramanbiolibui/utils", "")
 
 def image_to_base64(image_path):
     """ Convert an image to base64 encoding """
