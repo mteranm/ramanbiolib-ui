@@ -12,15 +12,16 @@ A standalone UI for Biomolecule Identifiaction by means of Raman Spectroscopy us
 
 Installation:
 
->
-> pip install git+https://github.com/mteranm/ramanbiolib-ui
->
+
+```
+pip install git+https://github.com/mteranm/ramanbiolib-ui
+```
 
 Run:
 
->
-> python ramanbiolib-ui
->
+```
+python ramanbiolib-ui
+```
 
 ### Windows executable file
 
