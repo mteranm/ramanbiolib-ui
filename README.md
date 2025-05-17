@@ -50,6 +50,11 @@ Parameters:
 - **Tolerance size**: the simmetrical maximum distance tolerance for peak matching.
 - **Penalty type**: the penalty function for PIUR calculation. Linear or Inverse power (1/x).
 - **Sorted by**: the metric used to sort the results (IUR, MR, RMR, PIUR). Default IUR. 
+  - Considering query spectrum peaks Pa and DB spectrum peaks Pb: 
+    - MR (Matching Ratio) = intersection(Pa, Pb)/len(Pa) 
+    - RMR (Reverse Matching Ratio) = intersection(Pa, Pb)/len(Pb) 
+    - IUR (Intersection Union Ratio) = intersection(Pa, Pb)/union(Pa, Pb) 
+    - PIUR (Penalized Intersection Union Ratio) = penalized_intersection(Pa, Pb)/union(Pa, Pb) 
 - **Top N table**: the number of components to show in the result table.
 - **Top N plot**: the number of components to show in the result plot.
 
@@ -70,6 +75,7 @@ and the spectra comparison plot:
 
 If you use this tool for research, please cite us:
 
+> Terán, M and Ruiz, JJ and Loza-Álvarez, P and Masip, D and Merino, D, *Open Raman Spectral Library for Biomolecule Identification*. Available at SSRN: https://ssrn.com/abstract=5185686 or http://dx.doi.org/10.2139/ssrn.5185686 
 
 ## License
 

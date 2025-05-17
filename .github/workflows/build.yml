@@ -75,3 +75,4 @@ jobs:
           path: |
             dist/ramanbiolib-ui.exe
             dist/ramanbiolib-ui.app/
+          retention-days: 15

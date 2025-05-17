@@ -9,7 +9,7 @@ from ramanbiolib.search import PeakMatchingSearch, SpectraSimilaritySearch
 def format_df_result(result_df):
     result_df['laser'] = result_df['laser'].astype(float)
     result_df = result_df.set_index(result_df.index.to_numpy()+1)
-    return result_df.rename({ "group": "class"}, axis=1)
+    return result_df
 
 def format_result_html(table, full_table, plot):
     # Read results HTML
@@ -61,7 +61,7 @@ def spectra_slk_search(csv_data, filename, w, results_n, plot_n):
     search_results = (
         search_results_obj.get_results().reset_index(drop=True)
         .rename({"similarity_score": "slk_score"}, axis=1)
-        [['group', 'component', 'laser', 'reference', 'slk_score']]
+        [['type', 'id', 'component', 'laser', 'reference', 'slk_score']]
     )
     return format_df_result(search_results[:results_n]), format_result_html(
         format_df_result(search_results[:results_n]).to_html(render_links=True), 
@@ -105,7 +105,7 @@ def spectra_pm_search(source_type, sort_col, tolerance, penalty, results_n, plot
     )
     search_results = (
         search_results_obj.get_results(sort_col=sort_col)
-        [['group', 'component', 'laser', 'reference', 
+        [['type', 'id', 'component', 'laser', 'reference', 
           'MR', 'RMR', 'IUR', 'PIUR']]
         .reset_index(drop=True)
     )
