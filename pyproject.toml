@@ -24,8 +24,12 @@ dependencies = [
   "pandas>=1.1.5,<2.0",        
   "scipy>=1.7.3,<1.8",         
   "plotly>=5.0,<6.0",
-  "git+https://github.com/mteranm/ramanbiolib.git"       
+  "ramanbiolib"       
 ]
+
+[project.urls]
+Homepage = "https://github.com/mteranm/ramanbiolib-ui"
+Repository = "https://github.com/mteranm/ramanbiolib-ui"
 
 [tool.setuptools.packages.find]
 include = ["ramanbiolibui*"]
