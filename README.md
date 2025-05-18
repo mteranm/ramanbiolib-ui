@@ -14,7 +14,7 @@ Installation:
 
 
 ```
-pip install git+https://github.com/mteranm/ramanbiolib-ui
+pip install git+https://github.com/mteranm/ramanbiolib-ui.git
 ```
 
 Run:
@@ -25,9 +25,14 @@ ramanbiolib-ui
 
 ### Windows executable file
 
-Download the app executable file and start using RamanBiolib.
+You can download the Windows executable (`.exe` file) from the **Releases** section of this repository:
 
-> **Note**: This executable file is self-signed so Windows and/or Antivirus software can mark this as dangerous. The file is not unsecure is just a package from this open-source code created via PyInstaller. If you have any concern about running the executable file, you can install Python version.
+1. Go to the [Releases page](https://github.com/mteranm/ramanbiolib-ui/releases).
+2. Find the latest release (or the version you want).
+3. Under the **Assets** section, click on the `ramanbiolib-ui.exe` file to download it.
+4. Run the downloaded file to start the application.
+
+> **Note**: This executable file is self-signed, so Windows and/or antivirus software may flag it as potentially unsafe. However, the file is secure — it is simply a packaged version of this open-source code created using PyInstaller. If you have any concerns about running the executable, you can always install and run the Python version instead.
 
 ## How to use this tool
 
