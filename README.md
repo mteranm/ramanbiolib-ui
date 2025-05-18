@@ -1,5 +1,5 @@
 <picture align="center">
-  <img alt="RamanBiolib logo" style="background:white; padding: 20px;" src="ramanbiolibui/img/logo.png">
+  <img alt="RamanBiolib logo" style="background:white; padding: 20px;" src="https://raw.githubusercontent.com/mteranm/ramanbiolib-ui/main/ramanbiolibui/img/logo.png">
 </picture>
 
 # RamanBiolib UI:  
@@ -14,7 +14,7 @@ Installation:
 
 
 ```
-pip install git+https://github.com/mteranm/ramanbiolib-ui.git
+pip install ramanbiolib-ui
 ```
 
 Run:
@@ -47,16 +47,16 @@ Parameters:
 - **Top N plot**: the number of components to show in the result plot.
 
 
-![SLK search](docs/slk_search.png)
+![SLK search](https://raw.githubusercontent.com/mteranm/ramanbiolib-ui/main/docs/slk_search.png)
 
 The search results display the ranked table of the most similar biomolecules in the RamanBiolib database:
 
-![SLK table](docs/slk_table.png)
+![SLK table](https://raw.githubusercontent.com/mteranm/ramanbiolib-ui/main/docs/slk_table.png)
 
 
 and the spectra comparison plot:
 
-![SLK plot](docs/slk_plot.png)
+![SLK plot](https://raw.githubusercontent.com/mteranm/ramanbiolib-ui/main/docs/slk_plot.png)
 
 
 ### Peak matching search
@@ -83,16 +83,16 @@ Parameters:
 - **Top N plot**: the number of components to show in the result plot.
 
 
-![PM search](docs/pm_search.png)
+![PM search](https://raw.githubusercontent.com/mteranm/ramanbiolib-ui/main/docs/pm_search.png)
 
 The search results display the ranked table of the most similar biomolecules in the RamanBiolib database:
 
-![PM table](docs/pm_table.png)
+![PM table](https://raw.githubusercontent.com/mteranm/ramanbiolib-ui/main/docs/pm_table.png)
 
 
 and the spectra comparison plot:
 
-![PM plot](docs/pm_plot.png)
+![PM plot](https://raw.githubusercontent.com/mteranm/ramanbiolib-ui/main/docs/pm_plot.png)
 
 
 ## How to cite this tool
@@ -103,4 +103,4 @@ If you use this tool for research, please cite us:
 
 ## License
 
-[GNU GPL v3](./LICENSE)
+[GNU GPL v3](https://raw.githubusercontent.com/mteranm/ramanbiolib-ui/main/LICENSE)
