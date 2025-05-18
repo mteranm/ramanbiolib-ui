@@ -38,3 +38,6 @@ ramanbiolibui = ["static/**/*", "templates/**/*", "img/**/*"]
 
 [project.scripts]
 ramanbiolib-ui = "ramanbiolibui.app:main"
+
+[tool.setuptools.dynamic]
+version = {attr = "ramanbiolibui.__version__"}
