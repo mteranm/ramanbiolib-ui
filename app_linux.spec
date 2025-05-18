@@ -35,6 +35,7 @@ a = Analysis(
         ("ramanbiolibui/img/uoc.png", "src/img/"),
         (lib_path + "/ramanbiolib/db/raman_spectra_db.csv", "ramanbiolib/db"),
         (lib_path + "/ramanbiolib/db/raman_peaks_db.csv", "ramanbiolib/db"),
+        (py_lib_path + "/ramanbiolib/db/metadata_db.csv", "ramanbiolib/db"),
         *collect_data_files('cefpython3')
     ],
     hiddenimports=[],

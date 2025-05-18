@@ -21,9 +21,10 @@ dynamic = ["version"]
 dependencies = [
   "cefpython3==66.0",          
   "numpy>=1.21.6,<1.22",       
-  "pandas>=1.3.0,<1.4",        
+  "pandas>=1.1.5,<2.0",        
   "scipy>=1.7.3,<1.8",         
-  "plotly>=5.18.0,<5.19"       
+  "plotly>=5.0,<6.0",
+  "git+https://raman-biomolecule-library:glpat-RCvhrE2qe1XWFSRV6sDx@gitlab.com/teran-ia-projects/phd/raman/raman-biomolecule-library.git@develop"       
 ]
 
 [tool.setuptools.packages.find]

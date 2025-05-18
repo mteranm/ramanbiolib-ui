@@ -30,8 +30,7 @@ PYCRYPTO_MIN_VERSION = "2.6.1"
 # ----------------------------------------------------------------------------
 # Main
 # ----------------------------------------------------------------------------
-
-py_lib_path = "c:\\hostedtoolcache\\windows\\python\\3.7.9\\x64\\lib\\site-packages"  # First entry is usually the main 'lib' folder
+py_lib_path =  "c:\\hostedtoolcache\\windows\\python\\3.7.9\\x64\\lib\\site-packages"  # "C:\\Users\\Merli\\AppData\\Local\\Programs\\Python\\Python37\\lib\\site-packages"
 print(py_lib_path)
 
 specpath = os.path.dirname(os.path.abspath(SPEC)) 
@@ -58,6 +57,7 @@ a = Analysis(
         ("ramanbiolibui/img/uoc.png", "ramanbiolibui/img/"),
         (py_lib_path + "/ramanbiolib/db/raman_spectra_db.csv", "ramanbiolib/db"),
         (py_lib_path + "/ramanbiolib/db/raman_peaks_db.csv", "ramanbiolib/db"),
+        (py_lib_path + "/ramanbiolib/db/metadata_db.csv", "ramanbiolib/db"),
         (py_lib_path + "/cefpython3/icudtl.dat", "cefpython3"),
         (py_lib_path + "/cefpython3/natives_blob.bin", "cefpython3"),
         *collect_data_files('cefpython3'),
