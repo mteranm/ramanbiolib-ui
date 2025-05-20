@@ -14,13 +14,13 @@ Installation:
 
 
 ```
-pip install ramanbiolib-ui
+pip install ramanbiolib_ui
 ```
 
 Run:
 
 ```
-ramanbiolib-ui
+ramanbiolib_ui
 ```
 
 ### Windows executable file
