@@ -25,9 +25,9 @@ ramanbiolib_ui
 > **Python version:** Due to the dependency with cefpython3 this library is only compatible with Python 3.7
 
 
-### Python 3.7 Installation
+#### Python 3.7 Installation
 
-#### Windows
+##### Windows
 
 Install Python:
 - Go to: https://www.python.org/downloads/release/python-379/
@@ -42,7 +42,7 @@ Run ramanbiolib_ui:
 py -3.7 -m ramanbiolib_ui
 ```
 
-#### MacOS
+##### MacOS
 
 Install Python:
 - Go to: https://www.python.org/downloads/release/python-379/
@@ -57,7 +57,7 @@ Run ramanbiolib_ui:
 python3.7 -m ramanbiolib_ui
 ```
 
-#### Linux (Ubuntu/Debian)
+##### Linux (Ubuntu/Debian)
 
 Install Python:
 ```
