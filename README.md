@@ -22,6 +22,56 @@ Run:
 ```
 ramanbiolib_ui
 ```
+> **Python version:** Due to the dependency with cefpython3 this library is only compatible with Python 3.7
+
+
+### Python 3.7 Installation
+
+#### Windows
+
+Install Python:
+- Go to: https://www.python.org/downloads/release/python-379/
+- Scroll down to **Files** -> Choose the Windows installer (e.g., Windows x86-64 executable installer)
+
+Install ramanbiolib_ui:
+```
+py -3.7 -m pip install ramanbiolib_ui
+```
+Run ramanbiolib_ui:
+```
+py -3.7 -m ramanbiolib_ui
+```
+
+#### MacOS
+
+Install Python:
+- Go to: https://www.python.org/downloads/release/python-379/
+- Scroll down to **Files** -> Choose the macOS installer
+
+Install ramanbiolib_ui:
+```
+python3.7 -m pip install ramanbiolib_ui
+```
+Run ramanbiolib_ui:
+```
+python3.7 -m ramanbiolib_ui
+```
+
+#### Linux (Ubuntu/Debian)
+
+Install Python:
+```
+sudo apt install python3.7
+```
+
+Install ramanbiolib_ui:
+```
+python3.7 -m pip install ramanbiolib_ui
+```
+Run ramanbiolib_ui:
+```
+python3.7 -m ramanbiolib_ui
+```
 
 ### Windows executable file
 
@@ -34,6 +84,17 @@ You can download the Windows executable (`.exe` file) from the **Releases** sect
 
 > **Note**: This executable file is self-signed, so Windows and/or antivirus software may flag it as potentially unsafe. However, the file is secure — it is simply a packaged version of this open-source code created using PyInstaller. If you have any concerns about running the executable, you can always install and run the Python version instead.
 
+#### Run the exe file from CMD/Power Shell
+
+Change to the .exe file download directory:
+```
+cd C:\Users\<replace-your-userame>\Downloads\
+```
+Run:
+```
+.\ramanbiolib-ui.exe
+```
+
 ## How to use this tool
 
 ### Spectral Linear Kernel (SLK) similarity search
@@ -42,6 +103,9 @@ This uses the full spectra plot to rank the database components by its SLK simil
 
 Parameters:
 - **Raman spectrum file**: the unnknown spectrum file containing the wavenumbers and intensity.
+    - Accepted formats (column names are not important, but the order):
+        - CSV (comma-separated) with 2 columns: wavenumbers, intensity
+        - Renishaw txt (double-tab-separated) with 2 columns: wavenumbers, intensity
 - **Window size**: the value of the window (W) parameter in SLK.
 - **Top N table**: the number of components to show in the result table.
 - **Top N plot**: the number of components to show in the result plot.
@@ -68,6 +132,9 @@ Parameters:
 - **Source:**
     - **spectrum**: the source is a spectrum file (as in SLK similarity search)
         - **Raman spectrum file**: the unnknown spectrum file containing the wavenumbers and intensity.
+            - Accepted formats (column names are not important, but the order):
+                - CSV (comma-separated) with 2 columns: wavenumbers, intensity
+                - Renishaw txt (double-tab-separated) with 2 columns: wavenumbers, intensity
         - **Peak detection prominence**: the min prominence threshold for peak detection of the uploaded spectrum once the specturm is min-max normalized. The peak detection is done using scipy find_peaks function.
     - **peaks list**: 
         - **Peaks wavenumbers**: the source is a comma-separated list of peaks wavenumbers positions (cm⁻¹). Example: 100,500,652,1205,1652 (step=1cm⁻¹, min=450, max=1800)
