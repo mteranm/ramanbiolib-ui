@@ -20,7 +20,7 @@ dynamic = ["version"]
 
 dependencies = [
   "cefpython3==66.0",          
-  "numpy>=1.21.6,<1.22",       
+  "numpy>=1.21.6,<1.22.0",       
   "pandas>=1.1.5,<2.0",        
   "scipy>=1.7.3,<1.8",         
   "plotly>=5.0,<6.0",
