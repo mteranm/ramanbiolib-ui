@@ -39,7 +39,7 @@ py -3.7 -m pip install ramanbiolib_ui
 ```
 Run ramanbiolib_ui:
 ```
-py -3.7 -m ramanbiolib_ui
+py -3.7 -m ramanbiolibui
 ```
 
 ##### MacOS
@@ -54,7 +54,7 @@ python3.7 -m pip install ramanbiolib_ui
 ```
 Run ramanbiolib_ui:
 ```
-python3.7 -m ramanbiolib_ui
+python3.7 -m ramanbiolibui
 ```
 
 ##### Linux (Ubuntu/Debian)
@@ -70,7 +70,7 @@ python3.7 -m pip install ramanbiolib_ui
 ```
 Run ramanbiolib_ui:
 ```
-python3.7 -m ramanbiolib_ui
+python3.7 -m ramanbiolibui
 ```
 
 ### Windows executable file
@@ -170,4 +170,4 @@ If you use this tool for research, please cite us:
 
 ## License
 
-[GNU GPL v3](https://raw.githubusercontent.com/mteranm/ramanbiolib-ui/main/LICENSE)
+[GNU GPL v3](https://raw.githubusercontent.com/mteranm/ramanbiolib-ui/main/LICENSE.txt)
